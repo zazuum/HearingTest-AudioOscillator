@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+        <title>Hearing Test / Audio Oscillator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        
+
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <style>
+
+    </style>   
+    
+    
+<body>
+   
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="javascript:SwapDivs('app','info')">Hearing Test / Audio Oscillator</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+
+        <a class="nav-link"  href="javascript:SwapDivs('app','info')">
+            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+            <circle cx="8" cy="4.5" r="1"/>
+            </svg>
+
+        </a>
+
+        </li>
+    </ul>
+    
+    </nav>
+ 
+<div class="container divMargin h-100 " style="max-width: 600px; padding-top: 0%; padding-bottom: 0%;">
+
+        <!-- app DIV-->
+        <div id="app" style="display:block; min-height: 425px;" class="box2" >
+
+
+    
+
+        <div id="stereo_panning_control" class="cent box text-center">
+            <p>Stereo panning</p>
+            <input class="panning-control cent" type="range" min="-1" max="1" step="0.1" value="0"> 
+            <span class="panning-value"> 0 </span>
+            <br>
+            <button class="btn btn-outline-dark custom-btn btn-spkr btn-sm" onclick="LeftSpeaker()">Left Speaker</button>
+            <button class="btn btn-outline-dark custom-btn btn-spkr btn-sm" onclick="CenterAudio()">Center</button>
+            <button class="btn btn-outline-dark custom-btn btn-spkr btn-sm" onclick="RightSpeaker()">Right Speaker</button>
+        </div>
+
+
+
+        <div id="frequency_control_block" class="cent box text-center">
+            <p>Frequency</p>
+            
+            <input type="text" style="width: 20%;" class="text-center" id="Frequency_Input" value="440" onchange="SetFrequencySlider(this)"/> hz
+            <br>
+            <input type="range" min="1" max="20154" oninput="FrequencySlider(this)" value="440" class="slider-control cent" id="Frequency_Slider"/> 
+                
+        </div>
+
+
+
+        <div id="waveform" class="cent box text-center">
+            <p>Waveform type</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 90%;">
+                <label class="btn btn-outline-dark custom-btn active btn-sm gumb">
+                    <input type="radio" name="waveformRadioButton" autocomplete="off" checked="" onclick="ChangeWaveformType(this);" value="sine" /> Sine
+                </label>
+                <label class="btn btn-outline-dark custom-btn btn-sm gumb">
+                    <input type="radio" name="waveformRadioButton" autocomplete="off" onclick="ChangeWaveformType(this);" value="square" /> Square
+                </label>
+                <label class="btn btn-outline-dark custom-btn btn-sm gumb">
+                    <input type="radio" name="waveformRadioButton" autocomplete="off" onclick="ChangeWaveformType(this);" value="sawtooth"/> Sawtooth
+                </label>
+                <label class="btn btn-outline-dark custom-btn btn-sm gumb">
+                    <input type="radio" name="waveformRadioButton" autocomplete="off" onclick="ChangeWaveformType(this);" value="triangle" /> Triangle        
+            </div>
+        </div>
+        
+        
+    
+        <div id="volume_control" class="cent box text-center">
+            <p>Volume</p>
+            <input class="volume-control cent" type="range" min="0" max="1" step="0.01" value="0.5">
+            <span class="volume-value">50%</span>
+        </div>
+
+
+
+        <div id="switch_ON/OFF" style="padding-top: 2%; margin-bottom: 10px;" class="cent box text-center">
+            
+            <button class="btn btn-outline-dark custom-btn btn-sm btnPlayStop" onclick="Play_Button()">Play</button>
+            <button class="btn btn-outline-dark custom-btn btn-sm btnPlayStop" onclick="Stop_Button()">Stop</button>
+            
+        </div>
+        
+
+        </div> <!--  app DIV end -->    
+        
+        
+        <!-- info -->
+<div class="text-center" id="info" style="display:none; background: cadetblue;">
+    <div class="box3">
+        
+        <table class="table  table-dark ">
+            
+            <thead>
+                <tr>
+                <th>Frequency</th>
+                <th>Age group</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>8 kHz</td>
+                <td>Everyone</td>
+                </tr>
+                <tr>
+                <td>10 kHz</td>
+                <td>Below 60 years</td>
+                </tr>
+                <tr>
+                <td>12 kHz</td>
+                <td>Below 50 years</td>
+                </tr>
+                <tr>
+                <td>14 kHz</td>
+                <td>Below 45 years</td>
+                </tr>
+                <tr>
+                <td>15 kHz</td>
+                <td>Below 40 years</td>
+                </tr>
+                <tr>
+                <td>16 kHz</td>
+                <td>Below 24 years</td>
+                </tr>
+                <tr>
+                <td>17.4 kHz</td>
+                <td>Below 24 years</td>
+                </tr>
+                <tr>
+                <tr>
+                <td>18 kHz</td>
+                <td>Below 24 years</td>
+                </tr>
+                <tr>
+                <td>19 kHz</td>
+                <td>Below 24 years</td>
+                </tr>
+                <tr>
+                <td>20 kHz</td>
+                <td>Below 24 years</td>
+                </tr>
+        
+        
+    </div>
+    
+
+    
+</div>  <!-- info end-->    
+
+
+        
+</div>
+
+
+        
+        
+        
+      <!––       # # #    Script   # # #                                -->
+     
+
+      <script src="js/script.js"></script>
+        
+        
+
+    </body>
+
+
+</html>

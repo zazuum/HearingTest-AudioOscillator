@@ -1,0 +1,121 @@
+
+#html, body {
+    height: 100%;
+    background: cadetblue;
+  }
+
+  table.table-bordered{
+    border:2px solid  rgb(62, 57, 57);
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:2px solid  rgb(62, 57, 57);
+}
+table.table-bordered > tbody > tr > td{
+    border:2px solid  rgb(62, 57, 57);
+}
+
+
+bg-dark{
+  
+  
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  padding: 0px;
+  padding-bottom: 0%;
+  padding-top: 0px;
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+  .box {
+    background: darkgray;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    padding: 0%;
+    padding-bottom: 3%;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 1%x;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .box2 {
+    background: darkgray;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(62, 57, 57);
+    padding: 0px;
+    padding-bottom: 0%;
+    padding-top: 0px;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+
+  .box3 {
+    background:#353840;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 3%;
+    display: inline-block;
+    margin-bottom: 0%x;
+    margin-left: 0px;
+    margin-right: 0px;
+    
+  }
+
+.divMargin{
+background: chartreuse;
+margin-top: 4%;
+padding-right: 0px;
+padding-left: 0px;
+
+}
+
+
+  .cent{
+      width: 100%;
+  }
+ 
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(48, 48, 59);
+    color: white;
+    text-align: center;
+    
+ }
+
+ .btn-outline-dark.custom-btn {
+	background-color: lightgray;
+	border-color: black;
+}
+
+
+.btnPlayStop{
+  width: 20%;
+  text-align: center;
+}
+
+.btn-spkr{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.centerthis {
+  align-self: center;
+  justify-self: center;
+}
