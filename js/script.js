@@ -1,4 +1,22 @@
-const audioCtx = new(window.AudioContext || window.webkitAudioContext);
+           if((navigator.userAgent.indexOf("iPhone")  != -1 )) 
+           {
+               alert('iPhone devices are not supported');
+           
+           }
+           else if(navigator.userAgent.indexOf("iPad") != -1 )
+           {
+               alert('iPad devices are not supported');
+           }
+           else if(navigator.userAgent.indexOf("Macintosh") != -1 )
+           {
+               alert('Safari browser is not supported.');
+           }
+           
+
+
+
+
+          const audioCtx = new(window.AudioContext || window.webkitAudioContext);
           var oscillator = audioCtx.createOscillator();
           
           var panner = audioCtx.createStereoPanner();
