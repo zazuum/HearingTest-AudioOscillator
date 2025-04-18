@@ -1,3 +1,5 @@
+/* Mac browsers bring back support so this block is commented now. 
+
            if((navigator.userAgent.indexOf("iPhone")  != -1 )) 
            {
                alert('iPhone devices are not supported');
@@ -12,7 +14,7 @@
                alert('Safari browser is not supported.');
            }
            
-
+*/
 
 
 
