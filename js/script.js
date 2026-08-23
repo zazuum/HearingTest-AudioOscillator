@@ -96,12 +96,12 @@
           }
           
 
-          var freqControl = document.querySelector('.frequency-control');
-          var freqValue = document.querySelector('.frequency-value');
+          var freqControl = document.querySelector('.slider-control');
+          var freqValue = document.querySelector('#Frequency_Input');
   
           freqControl.oninput = function () {
               oscillator.frequency.value = freqControl.value;
-              freqValue.innerHTML = freqControl.value;
+              freqValue.value = freqControl.value;
               return freqControl.value;
           }
   
@@ -141,12 +141,36 @@
         }
   
 
+        function syncPanelHeight(app, info)
+            {
+            var source = document.getElementById(app);
+            var target = document.getElementById(info);
+            var display = source.style.display;
+            var visibility = source.style.visibility;
+            if( source.offsetHeight == 0 )
+            {
+                source.style.visibility = "hidden";
+                source.style.display = "block";
+            }
+            if( source.offsetHeight > 0 )
+            {
+                target.style.height = source.offsetHeight + "px";
+            }
+            source.style.display = display;
+            source.style.visibility = visibility;
+            }
+
         function SwapDivs(app,info)
             {
             d1 = document.getElementById(app);
             d2 = document.getElementById(info);
+            window.onresize = function() {
+                syncPanelHeight(app, info);
+            };
             if( d2.style.display == "none" )
             {
+                syncPanelHeight(app, info);
+                d2.style.paddingTop = getComputedStyle(d1).paddingTop;
                 d1.style.display = "none";
                 d2.style.display = "block";
             }
@@ -155,5 +179,17 @@
                 d1.style.display = "block";
                 d2.style.display = "none";
             }
+            document.querySelectorAll('.info-toggle').forEach(function(toggle) {
+                toggle.checked = d2.style.display !== "none";
+            });
             }
+
+        function ToggleInfo(control)
+            {
+            SwapDivs('app','info');
+            }
+
+            window.addEventListener("resize", function() {
+                syncPanelHeight("app", "info");
+            });
   
